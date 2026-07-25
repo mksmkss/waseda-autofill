@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "早稲田 勤務表自動入力",
+  "version": "2.0",
+  "description": "wpte勤務表に複数科目の時刻・チェックを自動入力します",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://www.wpte.waseda.jp/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "勤務表自動入力"
+  },
+  "options_page": "options.html"
+}

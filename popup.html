@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      width: 230px;
+      padding: 14px 16px;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      color: #222;
+    }
+    h3 { margin: 0 0 10px; font-size: 14px; }
+    label { display: block; margin-bottom: 4px; font-size: 12px; color: #555; }
+    select {
+      width: 100%;
+      padding: 6px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    #fillBtn  { background: #8B0000; color: #fff; }
+    #fillBtn:hover { background: #a00; }
+    #clearBtn { background: #eee; color: #c33; font-weight: normal; }
+    #debugBtn { background: #eee; color: #333; font-weight: normal; font-size: 11px; }
+    #optBtn   { background: none; border: none; color: #555; font-size: 11px; text-decoration: underline; cursor: pointer; padding: 0; width: auto; margin-top: 4px; }
+    #status   { margin-top: 8px; font-size: 12px; min-height: 16px; }
+    .ok  { color: #2a7; }
+    .err { color: #c33; }
+    .warn { color: #a60; }
+    #version  { margin-top: 10px; font-size: 10px; color: #999; text-align: right; }
+  </style>
+</head>
+<body>
+  <h3>⏰ 勤務表自動入力</h3>
+  <label>科目を選択</label>
+  <select id="courseSelect"><option value="">（科目を読み込み中...）</option></select>
+  <button id="fillBtn">▶ 自動入力を実行</button>
+  <button id="clearBtn">🗑 全行クリア</button>
+  <button id="debugBtn">🔍 フォーム構造をログ出力</button>
+  <button id="optBtn">⚙ 科目設定を編集</button>
+  <div id="status"></div>
+  <div id="version"></div>
+  <script src="yaml-parser.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

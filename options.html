@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>勤務表自動入力 – 設定</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      max-width: 680px;
+      margin: 24px auto;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      color: #222;
+      padding: 0 16px;
+    }
+    h2 { font-size: 18px; margin-bottom: 4px; }
+    p.desc { color: #555; margin: 0 0 16px; font-size: 13px; }
+    textarea {
+      width: 100%;
+      height: 420px;
+      font-family: 'Menlo', 'Courier New', monospace;
+      font-size: 13px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      line-height: 1.6;
+      resize: vertical;
+    }
+    .btns { margin-top: 10px; display: flex; gap: 8px; align-items: center; }
+    button {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    #saveBtn   { background: #8B0000; color: #fff; }
+    #saveBtn:hover { background: #a00; }
+    #checkBtn  { background: #eee; color: #333; font-weight: normal; }
+    #status    { font-size: 13px; color: green; }
+    #preview   { margin-top: 16px; }
+    #preview h3 { font-size: 14px; margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; }
+    th { background: #f5f5f5; }
+    .err { color: #c33; }
+    .ok  { color: #2a7; }
+  </style>
+</head>
+<body>
+  <h2>⚙ 科目設定（YAML）</h2>
+  <p class="desc">
+    YAMLで科目ごとの設定を記述します。GPTに「以下のフォーマットで○○の設定を作って」と頼めば生成してくれます。<br>
+    変更後は「保存」を押してください。
+  </p>
+
+  <textarea id="yamlInput" spellcheck="false" placeholder="YAMLを入力..."></textarea>
+
+  <div class="btns">
+    <button id="saveBtn">💾 保存</button>
+    <button id="checkBtn">✔ プレビュー確認</button>
+    <span id="status"></span>
+  </div>
+
+  <div id="preview"></div>
+
+  <script src="yaml-parser.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
