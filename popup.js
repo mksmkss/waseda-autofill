@@ -210,6 +210,8 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
         const dayCell = cells.find(c => ALL_DAYS.includes(c.textContent.trim()));
         if (!dayCell) continue;
         for (const inp of row.querySelectorAll('input')) {
+          const name = (inp.name || inp.id || '').toLowerCase();
+          if (name.match(/remark/)) continue; // 事務使用欄はクリア対象外
           if (!inp.type || inp.type === 'text') {
             inp.value = '';
             inp.dispatchEvent(new Event('input', { bubbles: true }));
