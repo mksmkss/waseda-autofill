@@ -60,14 +60,15 @@ function autofillInPage(course) {
       const name = (inp.name || inp.id || '').toLowerCase();
       if (sIdx   < 0 && (ph.match(/09.?30/) || name.match(/start|kaishi|kms/))) sIdx   = idx;
       else if (eIdx   < 0 && (ph.match(/12.?00/) || name.match(/end|shuryo|kme/))) eIdx   = idx;
-      else if (xIdx   < 0 && (ph.match(/00.?00/) || name.match(/jog|excl|jogai/))) xIdx   = idx;
+      else if (xIdx   < 0 && (ph.match(/00.?00/) || name.match(/jog|excl|except|jogai/))) xIdx   = idx;
       else if (subIdx < 0 && name.match(/kamoku|subj|kmok/)) subIdx = idx;
     });
 
-    if (sIdx   < 0 && textInputs.length > 0) sIdx   = 0;
-    if (eIdx   < 0 && textInputs.length > 1) eIdx   = 1;
-    if (xIdx   < 0 && textInputs.length > 2) xIdx   = 2;
-    if (subIdx < 0 && textInputs.length > 3) subIdx = 3;
+    const claimed = idx => idx === sIdx || idx === eIdx || idx === xIdx || idx === subIdx;
+    if (sIdx   < 0 && textInputs.length > 0 && !claimed(0)) sIdx   = 0;
+    if (eIdx   < 0 && textInputs.length > 1 && !claimed(1)) eIdx   = 1;
+    if (xIdx   < 0 && textInputs.length > 2 && !claimed(2)) xIdx   = 2;
+    if (subIdx < 0 && textInputs.length > 3 && !claimed(3)) subIdx = 3;
 
     if (sIdx   >= 0) setVal(textInputs[sIdx],   dayConfig.start);
     if (eIdx   >= 0) setVal(textInputs[eIdx],   dayConfig.end);
